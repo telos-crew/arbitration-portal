@@ -1,5 +1,5 @@
 import { createStore, compose } from 'redux';
-import rootReducer              from 'business/reducers';
+import rootReducer              from '../business/reducers';
 
 const initialState = {};
 const enhancers = [];

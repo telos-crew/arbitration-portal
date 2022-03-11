@@ -1,13 +1,13 @@
 import React, { Component }      from 'react';
 
 // Utilities
-import ScatterBridge             from 'utils/scatterBridge';
+import ScatterBridge             from '../../utils/scatterBridge';
 
 // Redux
 import { withRouter }            from 'react-router-dom';
 import { connect }               from 'react-redux';
-import { AuthenticationActions } from 'business/actions';
-import { AuthenticationSelectors } from 'business/selectors';
+import { AuthenticationActions } from '../../business/actions';
+import { AuthenticationSelectors } from '../../business/selectors';
 
 // Reactstrap Components
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';

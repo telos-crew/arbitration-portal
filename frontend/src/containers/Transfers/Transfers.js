@@ -12,8 +12,8 @@ import BlockConsole              from '../BlockConsole';
 
 // Redux
 import { connect }               from 'react-redux';
-import { AuthenticationActions } from 'business/actions';
-import { AuthenticationSelectors } from 'business/selectors';
+import { AuthenticationActions } from '../../business/actions';
+import { AuthenticationSelectors } from '../../business/selectors';
 
 // Reactstrap Components
 import { InputGroup, InputGroupAddon } from 'reactstrap';

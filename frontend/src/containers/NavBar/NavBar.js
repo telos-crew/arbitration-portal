@@ -3,14 +3,14 @@ import { Link }   from 'react-router-dom';
 
 
 // Resources
-import mainLogo                  from 'resources/telosLogo.png'
+import mainLogo                  from '../../resources/telosLogo.png'
 
 // Components
-import Login                     from 'containers/Login';
+import Login                     from '../../containers/Login';
 
 // Redux
 import { connect }               from 'react-redux';
-import { AuthenticationSelectors } from 'business/selectors';
+import { AuthenticationSelectors } from '../../business/selectors';
 
 // Reactstrap Components
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem }      from 'reactstrap';

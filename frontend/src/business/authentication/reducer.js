@@ -1,5 +1,5 @@
-import { ActionTypes } from 'const';
-import { createReducer } from 'utils/redux';
+import { ActionTypes } from '../../const';
+import { createReducer } from '../../utils/redux';
 
 export const STATE_KEY = 'authentication';
 

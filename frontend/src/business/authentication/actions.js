@@ -1,4 +1,4 @@
-import { ActionTypes } from 'const';
+import { ActionTypes } from '../../const';
 
 export function setAuthentication({ isLogin, account }) {
     return {
