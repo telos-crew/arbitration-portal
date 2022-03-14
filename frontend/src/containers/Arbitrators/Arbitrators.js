@@ -512,13 +512,13 @@ class Arbitrators extends Component {
     }
 
     componentDidMount = async() => {
-        await this.eosio.connect();
-        await this.eosio.login();
-        if (!(this.props.authentication.isLogin || this.props.authentication.account)) {
-            if (this.eosio.isConnected && this.eosio.currentAccount) {
-                this.toggleLogin();
-            }
-        }
+        // await this.eosio.connect();
+        // await this.eosio.login();
+        // if (!(this.props.authentication.isLogin || this.props.authentication.account)) {
+        //     if (this.eosio.isConnected && this.eosio.currentAccount) {
+        //         this.toggleLogin();
+        //     }
+        // }
         this.loadArbitrators();
         this.loadCases();
         this.loadBalances();
