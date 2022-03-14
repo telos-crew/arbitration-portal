@@ -6,7 +6,7 @@ import Transfers                 from '../containers/Transfers';
 import Arbitrators               from '../containers/Arbitrators';
 import Members                   from '../containers/Members';
 import NavBar                    from '../containers/NavBar';
-import Claims                    from '../containers/Claims';
+import Cases                    from '../containers/Cases';
 
 // Resources
 import mainLogo                  from '../resources/telosLogo.png'
@@ -41,7 +41,7 @@ class App extends Component {
                 <NavBar />
                 <Switch>
                     <Route exact path='/' render={Home} />
-                    <Route exact path='/claims' component={Claims} />
+                    <Route exact path='/cases' component={Cases} />
                     <Route exact path='/arbitrators' component={Arbitrators} />
                     <Route exact path='/members'     component={Members} />
                     <Route exact path='/transfers'   component={Transfers} />
