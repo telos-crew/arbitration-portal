@@ -37,7 +37,7 @@ class NavBar extends Component {
     render() {
 
           return (
-                <Navbar color='light' light expand='md'>
+                <Navbar color='light' light expand='md' className='main-navbar'>
                     <Link to='/' style={{ color: 'black', textDecoration: 'none' }}>
                         <img src={mainLogo} alt='mainLogo' height="40" width="40"/> Arbitration Portal
                     </Link>
@@ -45,17 +45,22 @@ class NavBar extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className='ml-auto' navbar>
                             <NavItem>
-                                <Link to='/arbitrators' style={ !this.props.authentication.isLogin ? {pointerEvents: 'none', color: 'black', textDecoration: 'none', marginRight: '10px'} : {color: 'black', textDecoration: 'none', marginRight: '10px'}} >
+                                <Link to='/claims' className={`main-navbar-link ${!this.props.authentication.isLogin && 'logged-out'}`}>
+                                    Claims
+                                </Link>
+                            </NavItem>
+                            <NavItem>
+                                <Link to='/arbitrators' className={`main-navbar-link ${!this.props.authentication.isLogin && 'logged-out'}`}>
                                     Arbitrator
                                 </Link>
                             </NavItem>
                             <NavItem>
-                                <Link to='/members' style={ !this.props.authentication.isLogin ? {pointerEvents: 'none', color: 'black', textDecoration: 'none', marginRight: '10px'} : {color: 'black', textDecoration: 'none', marginRight: '10px'}} >
+                                <Link to='/members' className={`main-navbar-link ${!this.props.authentication.isLogin && 'logged-out'}`}>
                                     Members
                                 </Link>
                             </NavItem>
                             <NavItem>
-                                <Link to='/transfers' style={ !this.props.authentication.isLogin ? {pointerEvents: 'none', color: 'black', textDecoration: 'none', marginRight: '10px'} : {color: 'black', textDecoration: 'none', marginRight: '10px'}} >
+                                <Link to='/transfers' className={`main-navbar-link ${!this.props.authentication.isLogin && 'logged-out'}`}>
                                     Transfers
                                 </Link>
                             </NavItem>

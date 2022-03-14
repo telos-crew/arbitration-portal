@@ -1,0 +1,18 @@
+.main-navbar .nav-item {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.main-navbar .main-navbar-link {
+	color: black;
+	text-decoration: none;
+	margin-right: 26px;
+}
+
+.main-navbar .main-navbar-link:hover {
+	cursor: pointer;
+	font-size: inherit !important;
+	font-weight: bolder;
+}
