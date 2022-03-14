@@ -5,7 +5,8 @@ import {  Route, Switch }   from 'react-router-dom';
 import Transfers                 from '../containers/Transfers';
 import Arbitrators               from '../containers/Arbitrators';
 import Members                   from '../containers/Members';
-import NavBar                     from '../containers/NavBar';
+import NavBar                    from '../containers/NavBar';
+import Claims                    from '../containers/Claims';
 
 // Resources
 import mainLogo                  from '../resources/telosLogo.png'
@@ -40,6 +41,7 @@ class App extends Component {
                 <NavBar />
                 <Switch>
                     <Route exact path='/' render={Home} />
+                    <Route exact path='/claims' component={Claims} />
                     <Route exact path='/arbitrators' component={Arbitrators} />
                     <Route exact path='/members'     component={Members} />
                     <Route exact path='/transfers'   component={Transfers} />

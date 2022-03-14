@@ -5,7 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "axios": "^0.18.0",
-    "classnames": "^2.2.6",
+    "classnames": "^2.3.1",
     "dotenv": "^6.2.0",
     "eosjs": "^20.0.0-beta3",
     "eosjs-ecc": "^4.0.4",
@@ -27,7 +27,8 @@
     "scatterjs-plugin-eosjs": "^1.5.0",
     "scatterjs-plugin-eosjs2": "^1.5.0",
     "socket.io-client": "^2.2.0",
-    "text-encoding": "^0.7.0"
+    "text-encoding": "^0.7.0",
+    "typescript": "^4.6.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -43,5 +44,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@types/reactstrap": "^8.7.2"
+  }
 }
