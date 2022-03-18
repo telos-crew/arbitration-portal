@@ -22,8 +22,8 @@ const CaseItem = ({ item }: { item: CaseFile}) => {
 			<td>{case_status}</td>
 			<td>{claimant}</td>
 			<td>{respondant}</td>
-			<td>{JSON.stringify(arbitrators)}</td>
-			<td>{JSON.stringify(approvals)}</td>
+			<td>{arbitrators.length}</td>
+			<td>{approvals.length}</td>
 			<td>{required_langs}</td>
 			<td title={JSON.stringify(unread_claims)}>{unread_claims.length}</td>
 			<td title={JSON.stringify(accepted_claims)}>{accepted_claims.length}</td>
