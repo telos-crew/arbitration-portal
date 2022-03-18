@@ -44,8 +44,13 @@ class NavBar extends Component {
                     <NavbarToggler onClick={this.toggleNavBar}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className='ml-auto' navbar>
+                        <NavItem>
+                            <Link to='/' className={`main-navbar-link ${!this.props.authentication.isLogin && 'logged-out'}`}>
+                                Home
+                            </Link>
+                            </NavItem>
                             <NavItem>
-                                <Link to='/' className={`main-navbar-link ${!this.props.authentication.isLogin && 'logged-out'}`}>
+                                <Link to='/cases' className={`main-navbar-link ${!this.props.authentication.isLogin && 'logged-out'}`}>
                                     Cases
                                 </Link>
                             </NavItem>
