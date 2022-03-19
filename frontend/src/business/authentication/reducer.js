@@ -3,24 +3,27 @@ import { createReducer } from '../../utils/redux';
 
 export const STATE_KEY = 'authentication';
 
-const initialState = {
+const INITIAL_STATE = {
     isLogin: false,
-    account: null
+    account: null,
+    identity: null
 };
 
-function setAuth(state, action) {
-    switch (action.type) {
+function setAuth(state = INITIAL_STATE, action) {
+    const { type, data } = action
+
+    switch (type) {
         case ActionTypes.SET_AUTH: {
-            return Object.assign({}, state, {
-                isLogin: typeof action.isLogin === "undefined" ? !state.isLogin : action.isLogin,
-                account: action.account || initialState.account
-            })
+            const { id } = data
+            return {
+                identity: id
+            }
         }
         default:
             return state;
     }
 }
 
-export const reducer = createReducer(initialState, {
+export const reducer = createReducer(INITIAL_STATE, {
     [ActionTypes.SET_AUTH]: setAuth,
 });
