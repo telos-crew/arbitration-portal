@@ -6,7 +6,7 @@ import { getEsrOptions } from '../const/esr'
 
 const { REACT_APP_TELOS_NODE_URL } = process.env
 
-const GET_TABLE_ROWS_ENDPOINT = 'v1/chain/get_table_rows'
+const TABLE_ROWS_ENDPOINT = 'v1/chain/get_table_rows'
 
 export const MAINNET_ENDPOINTS = ['https://telos.caleos.io', 'https://mainnet.telosusa.io']
 
@@ -42,8 +42,6 @@ const useBlockchain = () => {
     }
   ]
 
-  const GET_TABLE_ROWS_ENDPOINT = () => 'v1/chain/get_table_rows'
-
   const GET_TRX_WEB_LINK = (trx_id: string) => `${BLOCK_EXPLORER_ENDPOINT}/transaction/${trx_id}`
 
   const CREATE_IDENTITY_REQUEST = () => {
@@ -76,7 +74,7 @@ const useBlockchain = () => {
 
 	const GET_TABLE_ROWS = async (config: TableRowsConfig) => {
 		const { data } = await axios({
-			url: `${REACT_APP_TELOS_NODE_URL}/${GET_TABLE_ROWS_ENDPOINT}`,
+			url: `${REACT_APP_TELOS_NODE_URL}/${TABLE_ROWS_ENDPOINT}`,
 			method: 'post',
 			headers: {
 				'content-type': 'application/json'
@@ -107,7 +105,6 @@ const useBlockchain = () => {
 	return {
 		FETCH_CASES,
 		GET_AUTHORIZATION,
-		GET_TABLE_ROWS_ENDPOINT,
 		GET_TRX_WEB_LINK,
 		CREATE_IDENTITY_REQUEST,
 		GET_TABLE_ROWS
