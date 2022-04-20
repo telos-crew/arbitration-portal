@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Jumbotron, Table } from 'reactstrap'
+import { Table } from 'reactstrap'
 import useBlockchain from '../useBlockchain';
-import { CaseFile } from '../../types/blockchain';
 import CaseItem from './CaseItem';
+import CreateCase from './CreateCase';
 
 type Props = {}
 
@@ -12,9 +12,9 @@ const Cases = (props: Props) => {
 
 	const fetchCases = async () => {
 		try {
-			const something = await FETCH_CASES()
-			console.log('something: ', something)
-			setCases(something)
+			const caseData = await FETCH_CASES()
+			console.log('caseData: ', caseData)
+			setCases(caseData)
 		} catch (err) {
 			console.warn(err)
 		}
@@ -28,9 +28,7 @@ const Cases = (props: Props) => {
 
 	return (
 		<div className='ArbitratorContent'>
-			<Jumbotron className='jumbo'>
-				<span>hi</span>
-			</Jumbotron>
+			<CreateCase />
 			<Table bordered hover responsive>
 				<thead>
 					<tr>
