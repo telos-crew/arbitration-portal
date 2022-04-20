@@ -1,0 +1,12 @@
+.errorMessageWrap {
+	padding: 20px;
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+.errorMessage {
+	color: red;
+	text-align: right;
+}

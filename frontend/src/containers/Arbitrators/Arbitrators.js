@@ -19,8 +19,7 @@ import { AuthenticationActions } from '../../business/actions';
 
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
-import { Button, Spinner, Form, FormGroup, Label, CustomInput, Input, FormText, FormFeedback } from 'reactstrap';
-import { Jumbotron } from 'reactstrap';
+import { Button, Spinner, Form, FormGroup, Label, CustomInput, Input, FormText, FormFeedback, Jumbotron } from 'reactstrap';
 
 class Arbitrators extends Component {
 

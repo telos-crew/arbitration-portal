@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './Cases.css'
 import classNames from 'classnames'
 import {
 	Row,
@@ -12,7 +13,9 @@ import {
 	TabPane,
 	FormGroup,
 	Input,
-	Label
+	Label,
+	Spinner,
+	Button
 } from 'reactstrap'
 
 type Props = {}
@@ -27,13 +30,33 @@ const INITIAL_INPUT = {
 const CreateCase = (props: Props) => {
 	const [activeTab, setActiveTab] = useState('newCaseFile')
 	const [input, setInput] = useState(INITIAL_INPUT)
+	const[isSubmitting, setIsSubmitting] = useState(false)
+	const [errorMessage, setErrorMessage] = useState('')
 
 	const onChangeInput = (e: any, key: string) => {
+		setErrorMessage('')
 		const newInput = e.target.value
 		setInput({
 			...input,
 			[key]: newInput
 		})
+	}
+
+	const submit = () => {
+		if (!isInputValid()) return
+		setIsSubmitting(true)
+		console.log('submitting')
+		setTimeout(() => setIsSubmitting(false), 3000)
+	}
+
+	const isInputValid = () => {
+		let isValid = false
+		if (input.claimant && input.respondant && input.link && input.language) {
+			isValid = true
+		} else {
+			setErrorMessage('Please fill out all fields')
+		}
+		return isValid
 	}
 
 	return (
@@ -93,7 +116,12 @@ const CreateCase = (props: Props) => {
 									</Col>
 								</FormGroup>
 							</Form>
+							<Button className='submitButton' color='primary' onClick={submit} disabled={isSubmitting}>Submit</Button>
+							{isSubmitting && <Spinner className='submitSpinner' type='grow' color='primary' />}
 						</Col>
+						<Row className='errorMessageWrap'>
+							{!!errorMessage && <div className='errorMessage'>{errorMessage}</div>}
+						</Row>
 					</Row>					
 				</TabPane>			
 			</TabContent>
