@@ -1,3 +1,7 @@
+.langToggle {
+	min-width: 180px;
+}
+
 .errorMessageWrap {
 	padding: 20px;
 	display: flex;

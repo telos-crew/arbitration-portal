@@ -16,9 +16,14 @@ import {
 	Input,
 	Label,
 	Spinner,
-	Button
+	Button,
+	Dropdown,
+	DropdownToggle,
+	DropdownMenu,
+	DropdownItem
 } from 'reactstrap'
 import { RootState } from '../../types/redux';
+import { GET_LANG_CODES } from '../../const/lang';
 
 type Props = {}
 
@@ -34,14 +39,24 @@ const CreateCase = (props: Props) => {
 	const [activeTab, setActiveTab] = useState('newCaseFile')
 	const [input, setInput] = useState(INITIAL_INPUT)
 	const[isSubmitting, setIsSubmitting] = useState(false)
+	const [isLanguageDropdownVisible, setIsLanguageDropdownVisible] = useState(false)
 	const [errorMessage, setErrorMessage] = useState('')
 
 	const onChangeInput = (e: any, key: string) => {
+		console.log('onChangeInput e: ', 'key: ', key)
 		setErrorMessage('')
 		const newInput = e.target.value
 		setInput({
 			...input,
 			[key]: newInput
+		})
+	}
+
+	const onChangeLanguage = ({ target: { value }}) => {
+		console.log('onChangeLanguage, event: ', value)
+		setInput({
+			...input,
+			language: value
 		})
 	}
 
@@ -61,6 +76,13 @@ const CreateCase = (props: Props) => {
 		}
 		return isValid
 	}
+
+	const toggleLanguageDropdown = () => {
+		setIsLanguageDropdownVisible(!isLanguageDropdownVisible)
+	}
+
+	console.log('input: ', input)
+	const selectedLanguage = GET_LANG_CODES().find(item => item.code === input.language)
 
 	return (
 		<Jumbotron className='jumbo'>
@@ -83,9 +105,7 @@ const CreateCase = (props: Props) => {
 										Claimant
 									</Label>
 									<Col sm={3}>
-										<div>
 											<Input onChange={(newInput: string) => onChangeInput(newInput, 'claimant')} value={input.claimant} />
-										</div>
 									</Col>
 								</FormGroup>
 								<FormGroup className='formgroup' row>
@@ -93,9 +113,7 @@ const CreateCase = (props: Props) => {
 										Respondant
 									</Label>
 									<Col sm={3}>
-										<div>
 											<Input onChange={(newInput: string) => onChangeInput(newInput, 'respondant')} value={input.respondant} />
-										</div>
 									</Col>
 								</FormGroup>
 								<FormGroup className='formgroup' row>
@@ -103,9 +121,7 @@ const CreateCase = (props: Props) => {
 										Link
 									</Label>
 									<Col sm={3}>
-										<div>
 											<Input onChange={(newInput: string) => onChangeInput(newInput, 'link')} value={input.link} />
-										</div>
 									</Col>
 								</FormGroup>
 								<FormGroup className='formgroup' row>
@@ -113,9 +129,18 @@ const CreateCase = (props: Props) => {
 										Language
 									</Label>
 									<Col sm={3}>
-										<div>
-											<Input onChange={(newInput: string) => onChangeInput(newInput, 'language')} value={input.language} />
-										</div>
+									<Dropdown value={input.language} isOpen={isLanguageDropdownVisible} toggle={toggleLanguageDropdown}>
+										<DropdownToggle className='langToggle' caret>
+											{(selectedLanguage && selectedLanguage.lang) || 'Choose Language'}&nbsp;
+										</DropdownToggle>
+										<DropdownMenu>
+											{GET_LANG_CODES().map(({ lang, code }: any) => {
+												return (
+													<DropdownItem value={code} onClick={onChangeLanguage} key={code} active={code === input.language} dropdownValue={code}>{lang}</DropdownItem>
+												)
+											})}
+										</DropdownMenu>
+									</Dropdown>
 									</Col>
 								</FormGroup>
 							</Form>
