@@ -24,6 +24,7 @@ import {
 } from 'reactstrap'
 import { RootState } from '../../types/redux';
 import { GET_LANG_CODES } from '../../const/lang';
+import useBlockchain from '../useBlockchain';
 
 type Props = {}
 
@@ -36,9 +37,10 @@ const INITIAL_INPUT = {
 
 const CreateCase = (props: Props) => {
 	const { identity } = useSelector((state: RootState) => state.authentication)
-	const [activeTab, setActiveTab] = useState('newCaseFile')
+	const { FILE_CASE } = useBlockchain()
+	const [activeTab,] = useState('newCaseFile')
 	const [input, setInput] = useState(INITIAL_INPUT)
-	const[isSubmitting, setIsSubmitting] = useState(false)
+	const [isSubmitting, setIsSubmitting] = useState(false)
 	const [isLanguageDropdownVisible, setIsLanguageDropdownVisible] = useState(false)
 	const [errorMessage, setErrorMessage] = useState('')
 
@@ -60,20 +62,29 @@ const CreateCase = (props: Props) => {
 		})
 	}
 
-	const submit = () => {
+	const submit = async () => {
 		if (!isInputValid()) return
-		setIsSubmitting(true)
-		console.log('submitting')
-		setTimeout(() => setIsSubmitting(false), 3000)
+		const url = await FILE_CASE({
+			claimant: input.claimant,
+			respondant: input.respondant,
+			lang_codes: [parseInt(input.language)],
+			claim_link: input.link
+		}, 'cases')
+		window.open(url)
 	}
 
 	const isInputValid = () => {
-		let isValid = false
-		if (input.claimant && input.respondant && input.link && input.language) {
-			isValid = true
-		} else {
+		let isValid = true
+		if (!input.claimant || !input.respondant || !input.link || !input.language) {
+			isValid = false
 			setErrorMessage('Please fill out all fields')
 		}
+
+		if (input.link.length !== 46 && input.link.length !== 49) {
+			isValid = false
+			setErrorMessage("Link must be IPFS hash (starts with 'Qm...' and be 46 or 49 characters in length")
+		}
+
 		return isValid
 	}
 

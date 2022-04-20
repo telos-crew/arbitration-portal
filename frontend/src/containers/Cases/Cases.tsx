@@ -4,9 +4,7 @@ import useBlockchain from '../useBlockchain';
 import CaseItem from './CaseItem';
 import CreateCase from './CreateCase';
 
-type Props = {}
-
-const Cases = (props: Props) => {
+const Cases = () => {
 	const { FETCH_CASES } = useBlockchain()
 	const [cases, setCases] = useState([])
 
