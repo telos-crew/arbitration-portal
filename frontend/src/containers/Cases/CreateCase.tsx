@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Cases.css'
 import classNames from 'classnames'
+import { useSelector } from 'react-redux';
 import {
 	Row,
 	Col,
@@ -17,6 +18,7 @@ import {
 	Spinner,
 	Button
 } from 'reactstrap'
+import { RootState } from '../../types/redux';
 
 type Props = {}
 
@@ -28,6 +30,7 @@ const INITIAL_INPUT = {
 }
 
 const CreateCase = (props: Props) => {
+	const { identity } = useSelector((state: RootState) => state.authentication)
 	const [activeTab, setActiveTab] = useState('newCaseFile')
 	const [input, setInput] = useState(INITIAL_INPUT)
 	const[isSubmitting, setIsSubmitting] = useState(false)
@@ -116,7 +119,7 @@ const CreateCase = (props: Props) => {
 									</Col>
 								</FormGroup>
 							</Form>
-							<Button className='submitButton' color='primary' onClick={submit} disabled={isSubmitting}>Submit</Button>
+							<Button className='submitButton' color='primary' onClick={submit} disabled={isSubmitting || !identity}>Submit</Button>
 							{isSubmitting && <Spinner className='submitSpinner' type='grow' color='primary' />}
 						</Col>
 						<Row className='errorMessageWrap'>
