@@ -19,6 +19,7 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap
 import classnames    from 'classnames';
 import { Button, Spinner, Form, FormGroup, Label, CustomInput, Input, FormText, FormFeedback } from 'reactstrap';
 import { Jumbotron } from 'reactstrap';
+import FileCase from './FileCase';
 
 class Members extends Component {
 
@@ -630,6 +631,15 @@ class Members extends Component {
                     <TabPane tabId={tabElement.activeTab} key={tabElement.activeTab}>
                         <Row>
                             <Col sm='12'>
+                                {tabElement.id === 'filecase' ? (
+                                    <FileCase
+                                        languages={languages}
+                                        fileCaseArr={fileCaseArr}
+                                        handleSubmit={this.handleSubmit}
+                                        tabElement={tabElement}
+                                        inputChangedHandler={this.inputChangedHandler}
+                                        checkBoxChangedHandler={this.checkBoxChangedHandler}
+                                    />) : null}                                
                                 {tabElement.id === 'withdraw' ? 
                                     <Form onSubmit={(event) => this.handleSubmit(event, tabElement.id)}>
                                         {withdrawFormArr.map(formElement => (
@@ -637,32 +647,6 @@ class Members extends Component {
                                                 <Label for={formElement.id} sm={1}>{formElement.label}</Label>
                                                 <Col sm={11}>
                                                     <Input type={formElement.type} value={formElement.value} placeholder={formElement.placeholder} onChange={(event) => this.inputChangedHandler(event, tabElement.id, formElement.id)} />
-                                                    <FormFeedback>...</FormFeedback>
-                                                    <FormText>{formElement.text}</FormText>
-                                                </Col>
-                                            </FormGroup>
-                                        ))}
-                                    </Form> : null}
-                                {tabElement.id === 'filecase' ? 
-                                    <Form onSubmit={(event) => this.handleSubmit(event, tabElement.id)}>
-                                        {fileCaseArr.map(formElement => (
-                                            <FormGroup className='formgroup' key={formElement.id} row>
-                                                <Label for={formElement.id} sm={1}>{formElement.label}</Label>
-                                                <Col sm={11}>
-                                                    {formElement.id === 'lang_codes' ? 
-                                                        languages.map(language => (
-                                                            <CustomInput className='checkboxClass' key={language} name={formElement.id} type={formElement.type} id={language} label={language} onClick={() => this.checkBoxChangedHandler(tabElement.id, formElement.id, language)} />
-                                                        ))
-                                                    : null }
-                                                    {formElement.id === 'claim_link' ?                                                        
-                                                        <div>
-                                                            <Input type={formElement.type} value={formElement.value} placeholder={formElement.placeholder} onChange={(event) => this.inputChangedHandler(event, tabElement.id, formElement.id)} />
-                                                            <Uploader />
-                                                        </div>
-                                                    : null}
-                                                    {formElement.id !== 'lang_codes' && formElement.id !== 'claim_link' ? 
-                                                        <Input type={formElement.type} value={formElement.value} placeholder={formElement.placeholder} onChange={(event) => this.inputChangedHandler(event, tabElement.id, formElement.id)} />
-                                                    : null}
                                                     <FormFeedback>...</FormFeedback>
                                                     <FormText>{formElement.text}</FormText>
                                                 </Col>
