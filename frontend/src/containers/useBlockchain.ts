@@ -116,8 +116,8 @@ const useBlockchain = () => {
 
 	const FETCH_CASES = async (): Promise<any> => {
 		const { rows } = await GET_TABLE_ROWS({
-			code: 'eosio.arb',
-			scope: 'eosio.arb',
+			code: CONFIG[chain].ARBITRACTION_CONTRACT,
+			scope: CONFIG[chain].ARBITRACTION_CONTRACT,
 			table: 'casefiles'
 		});
 		return rows
