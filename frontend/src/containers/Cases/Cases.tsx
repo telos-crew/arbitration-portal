@@ -36,9 +36,8 @@ const Cases = () => {
 						<th>Respondant</th>
 						<th>Arbitrators</th>
 						<th>Approvals</th>
+						<th>Claims</th>
 						<th>Language</th>
-						<th>Unread Claims</th>
-						<th>Accepted Claims</th>
 						<th>Ruling</th>
 						<th>Last Updated</th>
 					</tr>

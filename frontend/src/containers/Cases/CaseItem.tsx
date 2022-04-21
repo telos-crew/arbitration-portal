@@ -1,34 +1,34 @@
 import React from 'react'
 import { CaseFile } from '../../types'
+import { CASE_STATUS } from '../../const/case';
+import { GET_LANG_CODES } from '../../const/lang';
 
 const CaseItem = ({ item }: { item: CaseFile}) => {
 	const {
-		accepted_claims,
 		approvals,
 		arbitrators,
 		case_id,
 		case_ruling,
 		case_status,
 		claimant,
-		last_edit,
+		update_ts,
 		required_langs,
 		respondant,
-		unread_claims,		
+		number_claims
 	} = item
 
 	return (
 		<tr key={case_id}>
 			<td>{case_id}</td>
-			<td>{case_status}</td>
+			<td>{CASE_STATUS[case_status]}</td>
 			<td>{claimant}</td>
 			<td>{respondant}</td>
 			<td>{arbitrators.length}</td>
 			<td>{approvals.length}</td>
-			<td>{required_langs}</td>
-			<td title={JSON.stringify(unread_claims)}>{unread_claims.length}</td>
-			<td title={JSON.stringify(accepted_claims)}>{accepted_claims.length}</td>
+			<td>{number_claims}</td>
+			<td>{required_langs.map(item => GET_LANG_CODES()[item].lang)}</td>
 			<td>{case_ruling}</td>
-			<td>{last_edit}</td>
+			<td>{update_ts}</td>
 		</tr>
 	)
 }
